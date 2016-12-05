@@ -30,6 +30,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -115,6 +118,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'cms.middleware.user.CurrentUserMiddleware',
     'cms.middleware.page.CurrentPageMiddleware',
     'cms.middleware.toolbar.ToolbarMiddleware',
@@ -131,6 +135,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django.contrib.messages',
+    'debug_toolbar',
     'cms',
     'menus',
     'sekizai',
@@ -154,7 +159,11 @@ INSTALLED_APPS = (
 LANGUAGES = (
     ## Customize this
     ('en', gettext('en')),
+    ('fr', gettext('fr')),
 )
+
+CMS_PLACEHOLDER_CACHE = False
+CMS_PLUGIN_CACHE = False
 
 CMS_LANGUAGES = {
     ## Customize this
@@ -171,19 +180,34 @@ CMS_LANGUAGES = {
             'name': gettext('en'),
             'redirect_on_fallback': True,
         },
+        {
+            'public': True,
+            'code': 'fr',
+            'hide_untranslated': False,
+            'name': gettext('fr'),
+            'redirect_on_fallback': True,
+        },
     ],
 }
 
 CMS_TEMPLATES = (
     ## Customize this
-    ('fullwidth.html', 'Fullwidth'),
-    ('sidebar_left.html', 'Sidebar Left'),
-    ('sidebar_right.html', 'Sidebar Right')
+    ('translated.html', 'translated'),
+    ('untranslated.html', 'untranslated'),
 )
 
 CMS_PERMISSION = True
 
-CMS_PLACEHOLDER_CONF = {}
+CMS_PLACEHOLDER_CONF = {
+    'translated': {
+        'untranslated': False,
+        'language_fallback': True,
+    },
+    'untranslated': {
+        'untranslated': True,
+        'language_fallback': False,
+    }
+}
 
 DATABASES = {
     'default': {

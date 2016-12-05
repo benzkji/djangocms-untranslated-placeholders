@@ -4,5 +4,10 @@
 {% block title %}{% page_attribute "page_title" %}{% endblock title %}
 
 {% block content %}
-	{% placeholder "content" %}
+    <div class="sidebar">
+        {% placeholder "translated1" %}
+    </div>
+    <div class="content">
+        {% placeholder "translated2" %}
+    </div>
 {% endblock content %}

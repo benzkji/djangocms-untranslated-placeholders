@@ -1,6 +1,10 @@
 
+django-debug-toolbar
 -e 'git+git@github.com:benzkji/django-cms.git@feature-untranslated-placeholder#egg=django-cms'
 # django-cms<3.5
+
+
+# other
 djangocms-admin-style>=1.2,<1.3
 django-treebeard>=4.0,<5.0
 
