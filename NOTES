@@ -1,0 +1,8 @@
+
+cms.utils.plugins
+-> assign_plugins
+-> _assign_plugins
+
+ISSUES
+-> save with language=None instead of language.
+-> publisher_state is only set for original language (in which the plugin was inserted)
