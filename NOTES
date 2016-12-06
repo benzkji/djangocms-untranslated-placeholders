@@ -5,4 +5,4 @@ cms.utils.plugins
 
 ISSUES
 -> save with language=None instead of language.
--> publisher_state is only set for original language (in which the plugin was inserted)
+-> publisher_state is only set on title with original language (in which the plugin was inserted)
